@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
-    protected $fillable = ['name','description','difficulty','cooking_time','image_path'];
+    protected $fillable = ['name','ingredients','description','difficulty','cooking_time','image_path'];
 }
