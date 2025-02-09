@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
-    protected $fillable = ['name','description','difficulty','cooking_time','image_path'];
+    protected $fillable = ['name','description','difficulty','cooking_time','image_path', 'ingredients'];
+
+    public function favoritedBy(){
+        return $this->belongsToMany(User::class, 'favorites', 'user_id', 'recipe_id');
+    }
 }
