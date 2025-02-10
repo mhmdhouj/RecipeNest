@@ -18,10 +18,10 @@ class RecipesController extends Controller
                 $query->orderBy('cooking_time','desc');
             }
             elseif ($request->sort == 'difficulty_asc'){
-                $query->orderBy('difficulty','asc');
+                $query->orderBy('diff_value','asc');
             }
             else {
-                $query->orderBy('difficulty','desc');
+                $query->orderBy('diff_value','desc');
             }
         }
 

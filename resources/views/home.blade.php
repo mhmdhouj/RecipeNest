@@ -32,7 +32,7 @@
                         <div class="p-4">
                             <h2 class="text-xl font-bold text-green-800"> {{$recipe->name}} </h2>
                             <p class="text-green-600"> <span class="font-semibold">Difficulty:</span> {{$recipe->difficulty}} </p>
-                            <p class="text-green-600"> <span class="font-semibold">Time:</span> {{$recipe->cooking_time}} </p>
+                            <p class="text-green-600"> <span class="font-semibold">Time:</span> {{$recipe->cooking_time . " mins"}} </p>
                             <div class="mt-4 flex justify-between items-center">
                                 <a href="{{route('details', $recipe)}}" class="text-green-600 hover:text-green-800">View Details</a>
                                 @if ($favorites->contains($recipe))

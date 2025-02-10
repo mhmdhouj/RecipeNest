@@ -43,7 +43,7 @@
                     icon: 'success',
                     title: 'Success!',
                     text: successMessage,
-                    confirmButtonColor: '#10B981', // Match your green theme
+                    confirmButtonColor: '#10B981', 
                 });
             }
         });

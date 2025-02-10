@@ -13,7 +13,7 @@
                         <div class="p-4">
                             <h2 class="text-xl font-bold text-green-800"> {{$favorite->name}} </h2>
                             <p class="text-green-600"> <span class="font-semibold">Difficulty:</span> {{$favorite->difficulty}} </p>
-                            <p class="text-green-600"> <span class="font-semibold">Time:</span> {{$favorite->cooking_time}} </p>
+                            <p class="text-green-600"> <span class="font-semibold">Time:</span> {{$favorite->cooking_time . " mins"}} </p>
                             <div class="mt-4 flex justify-between items-center">
                                 <a href="{{route('details', $favorite)}}" class="text-green-600 hover:text-green-800">View Details</a>
                                 <form action="{{route('favorites.remove', $favorite)}}" method="POST">

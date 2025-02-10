@@ -11,7 +11,7 @@
                         <span class="font-semibold">Difficulty:</span> {{$recipe->difficulty}}
                     </p>
                     <p class="text-green-600">
-                        <span class="font-semibold">Time:</span> {{$recipe->cooking_time}}
+                        <span class="font-semibold">Time:</span> {{$recipe->cooking_time . " mins"}}
                     </p>
                 </div>
 
