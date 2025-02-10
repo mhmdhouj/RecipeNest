@@ -17,8 +17,9 @@ return new class extends Migration
             $table->longText('ingredients');
             $table->longText('description');
             $table->string('difficulty');
+            $table->integer('diff_value');
             $table->string('image_path');
-            $table->string('cooking_time');
+            $table->integer('cooking_time');
             $table->timestamps();
         });
     }

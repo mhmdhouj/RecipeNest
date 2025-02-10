@@ -7,56 +7,49 @@ use App\Models\Recipe;
 
 class RecipesController extends Controller
 {
-    public function index(){
-        $recipes = Recipe::query()->paginate();
-        return view("home", ['recipes' => $recipes]);
+    public function index(Request $request){
+        $query = Recipe::query();
+        
+        if ($request->has('sort')){
+            if ($request->sort == 'time_asc'){
+                $query->orderBy('cooking_time','asc');
+            }
+            elseif ($request->sort == 'time_desc'){
+                $query->orderBy('cooking_time','desc');
+            }
+            elseif ($request->sort == 'difficulty_asc'){
+                $query->orderBy('diff_value','asc');
+            }
+            else {
+                $query->orderBy('diff_value','desc');
+            }
+        }
+
+        $recipes = $query->get();
+        $user = request()->user();
+        $favoriteRecipes = $user ? $user->favorites()->get() : collect();
+        return view("home", ['recipes' => $recipes, 'favorites' => $favoriteRecipes]);
     }
 
     public function searchRecipe(Request $request){
-        $data = $request->validate(
-            ['search_input'=>['string']]
-        );
+        $data = $request->validate([
+            'search_input'=>['string']
+        ]);
 
         $name = $data['search_input'];
 
         $recipes = Recipe::where("name","like","%$name%")
                 ->orWhere("ingredients","like","%$name%")
-                ->paginate();
+                ->get();
         
-        return view("home",['recipes'=>$recipes]);
+        $user = request()->user();
+        $favoriteRecipes = $user ? $user->favorites()->get() : collect();
+        return view("home", ['recipes' => $recipes, 'favorites' => $favoriteRecipes]);
     }
 
-    public function create()
-    {
-        return view('admin.recipes.create');
-    }
-
-    // Store a new recipe (for admin dashboard)
-    // Store a new recipe (for admin dashboard)
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'ingredients' => 'required|string',
-            'description' => 'required|string',
-            'difficulty' => 'required|string|in:easy,medium,hard',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'cooking_time' => 'required|string',
-        ]);
-
-        // Store the uploaded image
-        $imagePath = $request->file('image')->store('recipe_images', 'public');
-
-        // Create the recipe
-        Recipe::create([
-            'name' => $request->name,
-            'ingredients' => $request->ingredients,
-            'description' => $request->description,
-            'difficulty' => $request->difficulty,
-            'image_path' => $imagePath,
-            'cooking_time' => $request->cooking_time,
-        ]);
-        //dd($request->all());
-        return redirect()->route('admin.dashboard')->with('success', 'Recipe added successfully!');
+    public function showDetails(Recipe $recipe){
+        $user = request()->user();
+        $favoriteRecipes = $user ? $user->favorites()->get() : collect();
+        return view("details",['recipe' => $recipe, 'favorites' => $favoriteRecipes]);
     }
 }

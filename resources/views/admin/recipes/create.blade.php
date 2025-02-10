@@ -1,72 +1,69 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-green-600 leading-tight">
-            {{ __('Add New Recipe') }}
-        </h2>
-    </x-slot>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin - Add Recipe</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <aside class="w-64 bg-green-700 text-white p-6 fixed left-0 top-0 bottom-0">
+            <h2 class="text-2xl font-semibold">Admin Panel</h2>
+            <nav class="mt-6">
+                <ul>
+                    <li class="mb-3"><a href="{{route('admin.dashboard')}}" class="hover:underline">Dashboard</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <form method="POST" action="{{ route('admin.recipes.store') }}" class="space-y-6" enctype="multipart/form-data">
-                        @csrf
-
-                        <!-- Name -->
-                        <div>
-                            <x-input-label for="name" :value="__('Recipe Name')" class="text-green-600" />
-                            <x-text-input id="name" class="block mt-1 w-full border-green-500 focus:ring-green-500 focus:border-green-500" type="text" name="name" required autofocus />
-                            <x-input-error :messages="$errors->get('name')" class="mt-2 text-red-500" />
-                        </div>
-
-                        <!-- Ingredients -->
-                        <div>
-                            <x-input-label for="ingredients" :value="__('Ingredients')" class="text-green-600" />
-                            <textarea id="ingredients" name="ingredients" class="block mt-1 w-full border-green-500 focus:ring-green-500 focus:border-green-500 rounded-md shadow-sm" rows="4" required></textarea>
-                            <x-input-error :messages="$errors->get('ingredients')" class="mt-2 text-red-500" />
-                        </div>
-
-                        <!-- Description -->
-                        <div>
-                            <x-input-label for="description" :value="__('Description')" class="text-green-600" />
-                            <textarea id="description" name="description" class="block mt-1 w-full border-green-500 focus:ring-green-500 focus:border-green-500 rounded-md shadow-sm" rows="4" required></textarea>
-                            <x-input-error :messages="$errors->get('description')" class="mt-2 text-red-500" />
-                        </div>
-
-                        <!-- Difficulty -->
-                        <div>
-                            <x-input-label for="difficulty" :value="__('Difficulty')" class="text-green-600" />
-                            <select id="difficulty" name="difficulty" class="block mt-1 w-full border-green-500 focus:ring-green-500 focus:border-green-500 rounded-md shadow-sm" required>
-                                <option value="easy">Easy</option>
-                                <option value="medium">Medium</option>
-                                <option value="hard">Hard</option>
-                            </select>
-                            <x-input-error :messages="$errors->get('difficulty')" class="mt-2 text-red-500" />
-                        </div>
-
-                        <!-- Image Upload -->
-                        <div>
-                            <x-input-label for="image" :value="__('Recipe Image')" class="text-green-600" />
-                            <input id="image" type="file" name="image" class="block mt-1 w-full border-green-500 focus:ring-green-500 focus:border-green-500 rounded-md shadow-sm" required />
-                            <x-input-error :messages="$errors->get('image')" class="mt-2 text-red-500" />
-                        </div>
-
-                        <!-- Cooking Time -->
-                        <div>
-                            <x-input-label for="cooking_time" :value="__('Cooking Time')" class="text-green-600" />
-                            <x-text-input id="cooking_time" class="block mt-1 w-full border-green-500 focus:ring-green-500 focus:border-green-500" type="text" name="cooking_time" required />
-                            <x-input-error :messages="$errors->get('cooking_time')" class="mt-2 text-red-500" />
-                        </div>
-
-                        <!-- Submit Button -->
-                        <div class="flex items-center justify-end">
-                            <x-primary-button class="bg-green-600 hover:bg-green-700 text-white">
-                                {{ __('Add Recipe') }}
-                            </x-primary-button>
-                        </div>
-                    </form>
-                </div>
+        <div class="flex-1 p-8">
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold text-green-700 mb-6">Add New Recipe</h2>
+                <form method="POST" action="{{ route('admin.recipes.store') }}" class="space-y-6" enctype="multipart/form-data">
+                    @csrf
+                    
+                    <div>
+                        <label for="name" class="block text-green-700 font-semibold">Recipe Name</label>
+                        <input id="name" type="text" name="name" class="w-full mt-1 p-2 border border-green-300 rounded-md focus:ring-2 focus:ring-green-500" required autofocus>
+                    </div>
+                    
+                    <div>
+                        <label for="ingredients" class="block text-green-700 font-semibold">Ingredients</label>
+                        <textarea id="ingredients" name="ingredients" class="w-full mt-1 p-2 border border-green-300 rounded-md focus:ring-2 focus:ring-green-500" rows="4" required></textarea>
+                    </div>
+                    
+                    <div>
+                        <label for="description" class="block text-green-700 font-semibold">Description</label>
+                        <textarea id="description" name="description" class="w-full mt-1 p-2 border border-green-300 rounded-md focus:ring-2 focus:ring-green-500" rows="4" required></textarea>
+                    </div>
+                    
+                    <div>
+                        <label for="difficulty" class="block text-green-700 font-semibold">Difficulty</label>
+                        <select id="difficulty" name="difficulty" class="w-full mt-1 p-2 border border-green-300 rounded-md focus:ring-2 focus:ring-green-500" required>
+                            <option value="Easy">Easy</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="image" class="block text-green-700 font-semibold">Recipe Image</label>
+                        <input id="image" type="file" name="image" class="w-full mt-1 p-2 border border-green-300 rounded-md focus:ring-2 focus:ring-green-500" required>
+                    </div>
+                    
+                    <div>
+                        <label for="cooking_time" class="block text-green-700 font-semibold">Cooking Time (mins)</label>
+                        <input id="cooking_time" type="number" name="cooking_time" class="w-full mt-1 p-2 border border-green-300 rounded-md focus:ring-2 focus:ring-green-500" required>
+                    </div>
+                    
+                    <div class="flex justify-end">
+                        <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700">Add Recipe</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</x-app-layout>
+</body>
+</html>
