@@ -80,5 +80,56 @@ class DatabaseSeeder extends Seeder
             'cooking_time' => 45,
             'image_path' => 'images/Chicken_Shawarma.jpg'
         ]);
+
+        Recipe::create([
+            'name'=> 'Butter Chicken',
+            'ingredients'=>'500g boneless chicken, 2 tablespoons butter, 1 cup tomato puree, 1/2 cup heavy cream, 1/2 cup yogurt, 1 onion (chopped), 3 cloves garlic (minced), 1-inch ginger (grated), 1 teaspoon garam masala, 1 teaspoon turmeric, 1 teaspoon cumin, 1 teaspoon coriander, 1/2 teaspoon chili powder, salt (to taste), fresh cilantro (for garnish)',
+            'description' => 'Marinate the chicken in yogurt, turmeric, and salt for at least 1 hour. Heat butter in a pan and sauté onions, garlic, and ginger until soft. Add garam masala, cumin, coriander, and chili powder, cooking for a minute. Stir in the tomato puree and simmer for 10 minutes. Add the marinated chicken and cook until tender. Pour in the heavy cream and simmer for 5 more minutes. Garnish with fresh cilantro and serve with naan or rice.',
+            'difficulty' => 'Moderate',
+            'diff_value' => 2,
+            'cooking_time' => 40,
+            'image_path' => 'images/Butter_Chicken.jpg'
+        ]);
+        
+        Recipe::create([
+            'name'=> 'Beef Stroganoff',
+            'ingredients'=>'500g beef sirloin (sliced), 1 onion (chopped), 2 cloves garlic (minced), 200g mushrooms (sliced), 1 cup beef broth, 1 cup sour cream, 2 tablespoons flour, 2 tablespoons butter, 1 teaspoon Dijon mustard, salt (to taste), black pepper (to taste), 250g egg noodles (cooked)',
+            'description' => 'In a pan, melt butter and sauté onions, garlic, and mushrooms until soft. Add the beef slices and cook until browned. Sprinkle flour over the beef and stir well. Pour in the beef broth and bring to a simmer. Stir in the mustard and sour cream, mixing well to create a creamy sauce. Season with salt and black pepper. Serve over cooked egg noodles and garnish with fresh parsley.',
+            'difficulty' => 'Moderate',
+            'diff_value' => 2,
+            'cooking_time' => 35,
+            'image_path' => 'images/Beef_Stroganoff.jpg'
+        ]);
+        
+        Recipe::create([
+            'name'=> 'Miso Ramen',
+            'ingredients'=>'200g ramen noodles, 4 cups chicken broth, 2 tablespoons miso paste, 1 tablespoon soy sauce, 1 teaspoon sesame oil, 2 cloves garlic (minced), 1-inch ginger (grated), 100g sliced pork belly, 1 soft-boiled egg, 50g bean sprouts, 1 green onion (chopped), 1 sheet nori (seaweed), chili flakes (optional)',
+            'description' => 'In a pot, heat sesame oil and sauté garlic and ginger. Add miso paste, soy sauce, and chicken broth. Simmer for 10 minutes. Cook ramen noodles separately according to the package instructions. In a pan, sear the sliced pork belly until crispy. Assemble the ramen bowl by adding cooked noodles, broth, pork belly, soft-boiled egg, bean sprouts, green onion, and nori. Sprinkle chili flakes if desired and serve hot.',
+            'difficulty' => 'Moderate',
+            'diff_value' => 2,
+            'cooking_time' => 30,
+            'image_path' => 'images/Miso_Ramen.jpg'
+        ]);
+        
+        Recipe::create([
+            'name'=> 'Vegetable Stir-Fry',
+            'ingredients'=>'1 cup broccoli florets, 1 carrot (sliced), 1 bell pepper (sliced), 100g snap peas, 2 cloves garlic (minced), 1-inch ginger (grated), 2 tablespoons soy sauce, 1 teaspoon sesame oil, 1 tablespoon cornstarch, 1/2 cup vegetable broth, 1 tablespoon olive oil, sesame seeds (for garnish)',
+            'description' => 'Heat olive oil in a pan and sauté garlic and ginger for 1 minute. Add the vegetables and stir-fry for 5 minutes. In a bowl, mix soy sauce, sesame oil, cornstarch, and vegetable broth. Pour the sauce over the vegetables and cook for another 2 minutes until thickened. Garnish with sesame seeds and serve with steamed rice or noodles.',
+            'difficulty' => 'Easy',
+            'diff_value' => 1,
+            'cooking_time' => 20,
+            'image_path' => 'images/Vegetable_Stir_Fry.jpg'
+        ]);
+        
+        Recipe::create([
+            'name'=> 'Shrimp Tacos',
+            'ingredients'=>'300g shrimp (peeled and deveined), 1 teaspoon paprika, 1 teaspoon cumin, 1 teaspoon garlic powder, salt (to taste), black pepper (to taste), 2 tablespoons olive oil, 6 small tortillas, 1/2 cup shredded cabbage, 1/4 cup sour cream, 1 tablespoon lime juice, 1/2 avocado (sliced), fresh cilantro (for garnish)',
+            'description' => 'Season shrimp with paprika, cumin, garlic powder, salt, and black pepper. Heat olive oil in a pan and cook shrimp for 2-3 minutes per side. Warm tortillas in a dry pan. Mix sour cream and lime juice to create a sauce. Assemble tacos with shrimp, shredded cabbage, avocado slices, and drizzle with lime sauce. Garnish with fresh cilantro and serve immediately.',
+            'difficulty' => 'Easy',
+            'diff_value' => 1,
+            'cooking_time' => 25,
+            'image_path' => 'images/Shrimp_Tacos.jpg'
+        ]);
+        
     }
 }
